@@ -2,6 +2,52 @@
     BoxLayout:
         orientation: 'vertical'
         Button:
-            text: 'Button1'
+            text: 'NEW'
+            on_press: root.new_button_press()
         Button:
-            text: 'Button2'
+            text: 'LOAD'
+            on_press: root.load_button_press()
+
+<CreateProject>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Create new Buildozer Project'
+            height: root.height / 10
+            size_hint_y: None
+        ScrollView:
+            do_scroll_x: False
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                Label:
+                    text: 'Title'
+                    size_hint_y: None
+                    height: '29sp'
+                TextInput:
+                    multiline: False
+                    id: create_project_title
+                    size_hint_y: None
+                    height: '29sp'
+                    text: 'Test App'
+                Label:
+                    text: 'Package Name'
+                    size_hint_y: None
+                    height: '29sp'
+                TextInput:
+                    multiline: False
+                    id: create_project_package
+                    size_hint_y: None
+                    height: '29sp'
+                    text: 'myapp'
+                Label:
+                    text: 'Package Domain'
+                    size_hint_y: None
+                    height: '29sp'
+                TextInput:
+                    multiline: False
+                    id: create_project_domain
+                    size_hint_y: None
+                    height: '29sp'
+                    text: 'org.test'

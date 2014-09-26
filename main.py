@@ -6,10 +6,10 @@ kivy.require('1.8.0')
 from kivy.app import App
 
 import scrmgr
-from mainmenu import Mainmenu
+from mainmenu import Mainmenu, CreateProject
 
 scrmgr.init()
-scrmgr.set_screens([Mainmenu(name='mainmenu')])
+scrmgr.set_screens([Mainmenu(name='mainmenu'), CreateProject(name='createproject')])
 scrmgr.get_sm().switch_to((scrmgr.get_screens())[0])
 
 class BuildozerGUIApp(App):
