@@ -1,4 +1,5 @@
 import ConfigParser
+from django.contrib.localflavor.se.forms import SECountySelect
 from mercurial.dispatch import request
 
 config = ConfigParser.RawConfigParser()
@@ -215,72 +216,139 @@ def set_android_p4a_whitelist(whitelist=None):
         whitelist = []
     config.set(SECTION_APP, 'android.p4a_whitelist', ','.join(whitelist))
 
+def get_android_p4a_whitelist():
+    whitelist = config.get(SECTION_APP, 'android.p4a_whitelist')
+    return ','.split(whitelist)
+
 def set_android_entrypoint(name='org.renpy.android.PythonActivity'):
     config.set(SECTION_APP, 'android.entrypoint', name)
+
+def get_android_entrypoint():
+    return config.get(SECTION_APP, 'android.entrypoint')
 
 def set_android_add_jars(names=None):
     if names is None:
         names = []
     config.set(SECTION_APP, 'android.add_jars', ','.join(names))
 
+def get_android_add_jars():
+    jars = config.get(SECTION_APP, 'android.add_jars')
+    return ','.split(jars)
+
 def set_android_add_src(names=None):
     if names is None:
         names = []
     config.set(SECTION_APP, 'android.add_src', ','.join(names))
 
+def get_android_add_src():
+    names = config.get(SECTION_APP, 'android.add_src')
+    return ','.split(names)
+
 def set_android_p4a_branch(branch='master'):
     config.set(SECTION_APP, 'android.branch', branch)
+
+def get_android_p4a_branch():
+    return config.get(SECTION_APP, 'android.branch')
 
 def set_android_ouya_category(category='GAME'):
     config.set(SECTION_APP, 'android.ouya.category', category)
 
+def get_android_ouya_category():
+    return config.get(SECTION_APP, 'android.ouya.category')
+
 def set_android_ouya_icon(path='%(source.dir)s/data/ouya_icon.png'):
     config.set(SECTION_APP, 'android.ouya.icon.filename', path)
+
+def get_android_ouya_icon():
+    return config.get(SECTION_APP, 'android.ouya.icon.filename')
 
 def set_android_manifest_intent_filters(path):
     config.set(SECTION_APP, 'android.manifest.intent_filters', path)
 
+def get_android_manifest_intent_filters():
+    return config.get(SECTION_APP, 'android.manifest.intent_filters')
+
 def set_android_add_libs_armeabi(libs=None):
     if libs is None:
         libs = ['libs/android/*.so']
-    config.set(SECTION_APP, 'android.add_libs_armeabi', libs)
+    config.set(SECTION_APP, 'android.add_libs_armeabi', ','.join(libs))
+
+def get_android_add_libs_armeabi():
+    libs = config.get(SECTION_APP, 'android.add_libs_armeabi')
+    return ','.split(libs)
 
 def set_android_add_libs_armeabi_v7a(libs=None):
     if libs is None:
         libs = ['libs/android-v7/*.so']
-    config.set(SECTION_APP, 'android.add_libs_armeabi_v7a', libs)
+    config.set(SECTION_APP, 'android.add_libs_armeabi_v7a', ','.join(libs))
+
+def get_android_add_libs_armeabi_v7a():
+    libs = config.get(SECTION_APP, 'android.add_libs_armeabi_v7a')
+    return ','.split(libs)
 
 def set_android_add_libs_x86(libs=None):
     if libs is None:
         libs = ['libs/android-x86/*.so']
-    config.set(SECTION_APP, 'android.add_libs_x86', libs)
+    config.set(SECTION_APP, 'android.add_libs_x86', ','.join(libs))
+
+def get_android_add_libs_x86():
+    libs = config.get(SECTION_APP, 'android.add_libs_x86')
+    return ','.split(libs)
 
 def set_android_add_libs_mips(libs=None):
     if libs is None:
         libs = ['libs/android-mips/*.so']
-    config.set(SECTION_APP, 'android.add_libs_mips', libs)
+    config.set(SECTION_APP, 'android.add_libs_mips', ','.join(libs))
+
+def get_android_add_libs_mips():
+    libs = config.get(SECTION_APP, 'android.add_libs_mips')
+    return ','.split(libs)
 
 def set_android_wakelock(value):
     config.set(SECTION_APP, 'android.wakelock', str(value))
+
+def get_android_wakelock():
+    return config.get(SECTION_APP, 'android.wakelock')
 
 def set_android_meta_data(data=None):
     if data is None:
         data = []
     config.set(SECTION_APP, 'android.meta_data', ','.join(data))
 
+def get_android_meta_data():
+    data = config.get(SECTION_APP, 'android.meta_data')
+    return ','.split(data)
+
 def set_android_library_references(references=None):
     if references is None:
         references = []
     config.set(SECTION_APP, 'android.library_references', ','.join(references))
 
+def get_android_library_references():
+    references = config.get(SECTION_APP, 'android.library_references')
+    return ','.split(references)
+
 def set_ios_codesign_debug(lastname, firstname, hexstring):
     config.set(SECTION_APP, 'ios.codesign.debug', '"iPhone Developer: '+lastname+' '+firstname+' ('+hexstring+')"')
+
+def get_ios_codesign_debug():
+    codesign = config.get(SECTION_APP, 'ios.codesign.debug')
+    #think about a way to solve this. perhaps regex?
 
 def set_ios_codesign_release():
     config.set(SECTION_APP, 'ios.codesign.release', config.get(SECTION_APP, 'ios.codesign.debug'))
 
+def get_ios_codesign_release():
+    return get_ios_codesign_debug()
+
 def set_buildozer_log_level(value):
     config.set(SECTION_BUILDOZER, 'log_level', value)
 
+def get_buildozer_log_level():
+    return config.getint(SECTION_BUILDOZER, 'log_level')
+
 def set_buildozer_warn_on_root(value):
     config.set(SECTION_BUILDOZER, 'warn_on_root', value)
+
+def get_buildozer_warn_on_root():
+    return config.getint(SECTION_BUILDOZER, 'warn_on_root')
