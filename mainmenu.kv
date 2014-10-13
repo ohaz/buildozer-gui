@@ -51,3 +51,44 @@
                     size_hint_y: None
                     height: '29sp'
                     text: 'org.test'
+                Label:
+                    text: 'Orientation'
+                    size_hint_y: None
+                    height: '29sp'
+                ToggleButton:
+                    text: 'landscape'
+                    size_hint_y: None
+                    height: '29sp'
+                    group: 'orientation'
+                    id: create_project_landscape
+                ToggleButton:
+                    text: 'portrait'
+                    size_hint_y: None
+                    height: '29sp'
+                    group: 'orientation'
+                    id: create_project_portrait
+                    state: 'down'
+        Button:
+            text: 'Create'
+            on_press: root.create_button_press()
+            height: root.height / 6
+            size_hint_y: None
+
+<LoadProject>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: '[b]Title: Loading...[/b]'
+            id: load_project_title
+            size_hint_y: None
+            height: root.height / 10
+        Button:
+            text: 'Edit'
+            on_press: root.edit_button_press()
+            size_hint_y: None
+            height: root.height / 10
+        Button:
+            text: 'Compile'
+            on_press: root.compile_button_press()
+            size_hint_y: None
+            height: root.height / 10

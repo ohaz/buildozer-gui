@@ -1,4 +1,5 @@
 import ConfigParser
+import os
 from django.contrib.localflavor.se.forms import SECountySelect
 from mercurial.dispatch import request
 
@@ -26,7 +27,7 @@ def init_default_spec(path='.', orientation='landscape', domain='org.test', name
 def save_spec(path=None):
     if not path:
         path = config.get(SECTION_APP, 'source.dir')
-    with open(path+'/buildozer.spec', 'rwb') as specfile:
+    with open(path+'/buildozer.spec', 'a+') as specfile:
         config.write(specfile)
 
 def load_spec(path=None):
