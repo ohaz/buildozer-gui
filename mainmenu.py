@@ -72,11 +72,27 @@ class CompileProject(Screen):
         if self.ids.compile_target_linux.state == 'down':
             # TODO not in buildozer yet
             pass
-        # TODO finish options
-        threading.Thread(target=self.build, args=(targets, [], [])).start()
+        debug = self.ids.compile_debug
+        release = self.ids.compile_release
+        if debug.state == 'down':
+            configuration = 'debug'
+        elif release.state == 'down':
+            configuration = 'release'
+        settings = []
+        if self.ids.compile_deploy.state == 'down':
+            settings.append('deploy')
+        if self.ids.compile_run.state == 'down':
+            settings.append('run')
+        threading.Thread(target=self.build, args=(targets, configuration, settings)).start()
 
     def build(self, targets, configuration, settings):
-        process = Popen(["buildozer", "android", "debug"], stdout=PIPE)
+        cmd = ['buildozer']
+        for t in targets:
+            cmd.append(t)
+        cmd.append(configuration)
+        for s in settings:
+            cmd.append(s)
+        process = Popen(cmd, stdout=PIPE)
         (output,err) = process.communicate()
         exit_code = process.wait()
         self.set_compile_status(2)
