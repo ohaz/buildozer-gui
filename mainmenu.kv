@@ -79,6 +79,7 @@
         cols: 1
         Label:
             text: '[b]Title: Loading...[/b]'
+            markup: True
             id: load_project_title
             size_hint_y: None
             height: root.height / 10
@@ -92,3 +93,66 @@
             on_press: root.compile_button_press()
             size_hint_y: None
             height: root.height / 10
+
+<CompileProject>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: '[b]Compile Project[b]'
+            markup: True
+            size_hint_y: None
+            height: root.height / 10
+        Label:
+            text: 'Options:'
+        GridLayout:
+            cols: 2
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Target'
+                ToggleButton:
+                    text: 'Android'
+                    id: compile_target_android
+                ToggleButton:
+                    text: 'iOS'
+                    disabled: True
+                    id: compile_target_ios
+                ToggleButton:
+                    text: 'Windows'
+                    disabled: True
+                    id: compile_target_windows
+                ToggleButton:
+                    text: 'Linux'
+                    disabled: True
+                    id: compile_target_linux
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Configuration:'
+                ToggleButton:
+                    text: 'debug'
+                    group: 'configuration'
+                    id: compile_debug
+                ToggleButton:
+                    text: 'release'
+                    group: 'configuration'
+                    id: compile_release
+                Label:
+                    text: 'Additional Stuff:'
+                ToggleButton:
+                    text: 'deploy'
+                    id: compile_deploy
+                ToggleButton:
+                    text: 'run'
+                    id: compile_run
+
+        Button:
+            text: 'Compile'
+            on_press: root.compile_button_press()
+            size_hint_y: None
+            height: root.height / 10
+        Label:
+            text: ''
+            size_hint_y: None
+            height: root.height / 15
+            id: compile_project_label

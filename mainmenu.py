@@ -1,9 +1,12 @@
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
-import os
+from kivy.clock import Clock, mainthread
 import specparser
 
+
 from subprocess import Popen, PIPE
+import threading
+import os
 
 import scrmgr
 
@@ -35,10 +38,45 @@ class CreateProject(Screen):
 class LoadProject(Screen):
     def on_enter(self, *args):
         specparser.load_spec(os.getcwd())
-        self.ids.load_project_title.text = specparser.get_title()
+        self.ids.load_project_title.text = 'Project: [b]'+specparser.get_title()+'[/b]'
+
     def compile_button_press(self):
+        scrmgr.get_sm().switch_to(scrmgr.get_screen('compileproject'))
+
+    def edit_button_press(self):
+        pass
+
+class CompileProject(Screen):
+
+    @mainthread
+    def set_compile_status(self, status):
+        label = self.ids.compile_project_label
+        if status == 1:
+            label.color = (1,1,0,1)
+            label.text = 'Compiling'
+        if status == 2:
+            label.color = (0,1,0,1)
+            label.text = 'Compiled successfully'
+
+    def compile_button_press(self):
+        self.set_compile_status(1)
+        targets = []
+        if self.ids.compile_target_android.state == 'down':
+            targets.append('android')
+        if self.ids.compile_target_ios.state == 'down':
+            # TODO
+            pass
+        if self.ids.compile_target_windows.state == 'down':
+            # TODO not in buildozer yet
+            pass
+        if self.ids.compile_target_linux.state == 'down':
+            # TODO not in buildozer yet
+            pass
+        # TODO finish options
+        threading.Thread(target=self.build, args=(targets, [], [])).start()
+
+    def build(self, targets, configuration, settings):
         process = Popen(["buildozer", "android", "debug"], stdout=PIPE)
         (output,err) = process.communicate()
         exit_code = process.wait()
-    def edit_button_press(self):
-        pass
+        self.set_compile_status(2)
