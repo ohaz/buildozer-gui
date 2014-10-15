@@ -8,9 +8,9 @@ Completely WIP right now. Don't use this until this readme gets changed!
 Requirements
 ------------
 
-kivy>=1.8.0
-all kivy dependencies
-python 2.7
+* kivy>=1.8.0
+* all kivy dependencies
+* python 2.7
 
 Instructions
 ------------
