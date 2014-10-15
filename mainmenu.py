@@ -15,12 +15,15 @@ Builder.load_file('mainmenu.kv')
 class Mainmenu(Screen):
 
     def new_button_press(self):
-        scrmgr.get_sm().switch_to(scrmgr.get_screen('createproject'))
+        scrmgr.switch_to(scrmgr.get_screen('createproject'))
 
     def load_button_press(self):
-        scrmgr.get_sm().switch_to(scrmgr.get_screen('loadproject'))
+        scrmgr.switch_to(scrmgr.get_screen('loadproject'))
 
 class CreateProject(Screen):
+
+    def back(self):
+        scrmgr.switch_to(scrmgr.last_screen)
 
     def create_button_press(self):
         cur_dir = os.getcwd()
@@ -33,7 +36,7 @@ class CreateProject(Screen):
             orientation = 'landscape'
         specparser.init_default_spec(cur_dir, orientation, domain, package_name, title)
         specparser.save_spec(cur_dir)
-        scrmgr.get_sm().switch_to(scrmgr.get_screen('loadproject'))
+        scrmgr.switch_to(scrmgr.get_screen('loadproject'))
 
 class LoadProject(Screen):
     def on_enter(self, *args):
@@ -41,12 +44,18 @@ class LoadProject(Screen):
         self.ids.load_project_title.text = 'Project: [b]'+specparser.get_title()+'[/b]'
 
     def compile_button_press(self):
-        scrmgr.get_sm().switch_to(scrmgr.get_screen('compileproject'))
+        scrmgr.switch_to(scrmgr.get_screen('compileproject'))
 
     def edit_button_press(self):
         pass
 
+    def back(self):
+        scrmgr.switch_to(scrmgr.last_screen)
+
 class CompileProject(Screen):
+
+    def back(self):
+        scrmgr.switch_to(scrmgr.last_screen)
 
     @mainthread
     def set_compile_status(self, status):
@@ -54,9 +63,13 @@ class CompileProject(Screen):
         if status == 1:
             label.color = (1,1,0,1)
             label.text = 'Compiling'
-        if status == 2:
+        elif status == 2:
             label.color = (0,1,0,1)
             label.text = 'Compiled successfully'
+        else:
+            label.color = (1,0,0,1)
+            label.text = 'Compilation error'
+
 
     def compile_button_press(self):
         self.set_compile_status(1)
@@ -64,8 +77,7 @@ class CompileProject(Screen):
         if self.ids.compile_target_android.state == 'down':
             targets.append('android')
         if self.ids.compile_target_ios.state == 'down':
-            # TODO
-            pass
+            targets.append('ios')
         if self.ids.compile_target_windows.state == 'down':
             # TODO not in buildozer yet
             pass
@@ -95,4 +107,10 @@ class CompileProject(Screen):
         process = Popen(cmd, stdout=PIPE)
         (output,err) = process.communicate()
         exit_code = process.wait()
-        self.set_compile_status(2)
+        if 'packaging done!' in output:
+            self.set_compile_status(2)
+        else:
+            self.set_compile_status(-1)
+
+class EditProject(Screen):
+    pass

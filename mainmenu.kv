@@ -11,10 +11,17 @@
 <CreateProject>:
     BoxLayout:
         orientation: 'vertical'
-        Label:
-            text: 'Create new Buildozer Project'
+        BoxLayout:
+            orientation: 'horizontal'
             height: root.height / 10
             size_hint_y: None
+            Button:
+                text: 'Back'
+                on_press: root.back()
+                width: root.width / 5
+                size_hint_x: None
+            Label:
+                text: 'Create new Buildozer Project'
         ScrollView:
             do_scroll_x: False
             GridLayout:
@@ -77,12 +84,19 @@
 <LoadProject>:
     GridLayout:
         cols: 1
-        Label:
-            text: '[b]Title: Loading...[/b]'
-            markup: True
-            id: load_project_title
-            size_hint_y: None
+        BoxLayout:
+            orientation: 'horizontal'
             height: root.height / 10
+            size_hint_y: None
+            Button:
+                text: 'Back'
+                on_press: root.back()
+                width: root.width / 5
+                size_hint_x: None
+            Label:
+                text: '[b]Title: Loading...[/b]'
+                markup: True
+                id: load_project_title
         Button:
             text: 'Edit'
             on_press: root.edit_button_press()
@@ -97,11 +111,18 @@
 <CompileProject>:
     GridLayout:
         cols: 1
-        Label:
-            text: '[b]Compile Project[b]'
-            markup: True
-            size_hint_y: None
+        BoxLayout:
+            orientation: 'horizontal'
             height: root.height / 10
+            size_hint_y: None
+            Button:
+                text: 'Back'
+                on_press: root.back()
+                width: root.width / 5
+                size_hint_x: None
+            Label:
+                text: '[b]Compile Project[b]'
+                markup: True
         Label:
             text: 'Options:'
         GridLayout:
@@ -115,7 +136,6 @@
                     id: compile_target_android
                 ToggleButton:
                     text: 'iOS'
-                    disabled: True
                     id: compile_target_ios
                 ToggleButton:
                     text: 'Windows'
