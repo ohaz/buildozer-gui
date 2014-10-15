@@ -25,6 +25,9 @@ class CreateProject(Screen):
     def back(self):
         scrmgr.switch_to(scrmgr.last_screen)
 
+    def home(self):
+        scrmgr.switch_to(scrmgr.get_screen('mainmenu'))
+
     def create_button_press(self):
         cur_dir = os.getcwd()
         title = self.ids.create_project_title.text
@@ -47,15 +50,23 @@ class LoadProject(Screen):
         scrmgr.switch_to(scrmgr.get_screen('compileproject'))
 
     def edit_button_press(self):
-        pass
+        scrmgr.switch_to(scrmgr.get_screen('editproject'))
 
     def back(self):
         scrmgr.switch_to(scrmgr.last_screen)
+
+    def home(self):
+        scrmgr.switch_to(scrmgr.get_screen('mainmenu'))
+
 
 class CompileProject(Screen):
 
     def back(self):
         scrmgr.switch_to(scrmgr.last_screen)
+
+    def home(self):
+        scrmgr.switch_to(scrmgr.get_screen('mainmenu'))
+
 
     @mainthread
     def set_compile_status(self, status):
@@ -86,6 +97,7 @@ class CompileProject(Screen):
             pass
         debug = self.ids.compile_debug
         release = self.ids.compile_release
+        configuration = 'debug'
         if debug.state == 'down':
             configuration = 'debug'
         elif release.state == 'down':
@@ -113,4 +125,8 @@ class CompileProject(Screen):
             self.set_compile_status(-1)
 
 class EditProject(Screen):
-    pass
+    def back(self):
+        scrmgr.switch_to(scrmgr.last_screen)
+
+    def home(self):
+        scrmgr.switch_to(scrmgr.get_screen('mainmenu'))

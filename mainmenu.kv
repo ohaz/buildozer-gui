@@ -16,9 +16,14 @@
             height: root.height / 10
             size_hint_y: None
             Button:
+                text: 'Home'
+                on_press: root.home()
+                width: root.width / 10
+                size_hint_x: None
+            Button:
                 text: 'Back'
                 on_press: root.back()
-                width: root.width / 5
+                width: root.width / 10
                 size_hint_x: None
             Label:
                 text: 'Create new Buildozer Project'
@@ -89,9 +94,14 @@
             height: root.height / 10
             size_hint_y: None
             Button:
+                text: 'Home'
+                on_press: root.home()
+                width: root.width / 10
+                size_hint_x: None
+            Button:
                 text: 'Back'
                 on_press: root.back()
-                width: root.width / 5
+                width: root.width / 10
                 size_hint_x: None
             Label:
                 text: '[b]Title: Loading...[/b]'
@@ -116,21 +126,34 @@
             height: root.height / 10
             size_hint_y: None
             Button:
+                text: 'Home'
+                on_press: root.home()
+                width: root.width / 10
+                size_hint_x: None
+            Button:
                 text: 'Back'
                 on_press: root.back()
-                width: root.width / 5
+                width: root.width / 10
                 size_hint_x: None
             Label:
                 text: '[b]Compile Project[b]'
                 markup: True
         Label:
             text: 'Options:'
+            height: root.height / 10
+            size_hint_y: None
+        BoxLayout:
+            orientation: 'horizontal'
+            height: root.height / 10
+            size_hint_y: None
+            Label:
+                text: 'Target'
+            Label:
+                text: 'Configuration:'
         GridLayout:
             cols: 2
             BoxLayout:
                 orientation: 'vertical'
-                Label:
-                    text: 'Target'
                 ToggleButton:
                     text: 'Android'
                     id: compile_target_android
@@ -138,17 +161,15 @@
                     text: 'iOS'
                     id: compile_target_ios
                 ToggleButton:
-                    text: 'Windows'
+                    text: 'Windows (not supported yet)'
                     disabled: True
                     id: compile_target_windows
                 ToggleButton:
-                    text: 'Linux'
+                    text: 'Linux (not supported yet)'
                     disabled: True
                     id: compile_target_linux
             BoxLayout:
                 orientation: 'vertical'
-                Label:
-                    text: 'Configuration:'
                 ToggleButton:
                     text: 'debug'
                     group: 'configuration'
@@ -176,3 +197,24 @@
             size_hint_y: None
             height: root.height / 15
             id: compile_project_label
+
+<EditProject>:
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            orientation: 'horizontal'
+            height: root.height / 10
+            size_hint_y: None
+            Button:
+                text: 'Home'
+                on_press: root.home()
+                width: root.width / 10
+                size_hint_x: None
+            Button:
+                text: 'Back'
+                on_press: root.back()
+                width: root.width / 10
+                size_hint_x: None
+            Label:
+                text: '[b]Edit Project[b]'
+                markup: True
