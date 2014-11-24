@@ -68,6 +68,12 @@
                     size_hint_y: None
                     height: '29sp'
                 ToggleButton:
+                    text: 'all'
+                    size_hint_y: None
+                    height: '29sp'
+                    group: 'orientation'
+                    id: create_project_all
+                ToggleButton:
                     text: 'landscape'
                     size_hint_y: None
                     height: '29sp'
@@ -218,3 +224,126 @@
             Label:
                 text: '[b]Edit Project[b]'
                 markup: True
+            Label:
+                id: current_sub_menu
+                text: 'Basic'
+            Button:
+                text: 'Save'
+                id: save_button
+                markup: True
+                on_press: root.save()
+        BoxLayout:
+            orientation: 'horizontal'
+            BoxLayout:
+                orientation: 'vertical'
+                width: root.width / 10
+                size_hint_x: None
+                Button:
+                    text: 'Basic'
+                    on_press: root.switch_to('Basic Settings')
+                Button:
+                    text: 'Dirs'
+                    on_press: root.switch_to('Directories')
+                Button:
+                    text: 'Inc/Exc'
+                    on_press: root.switch_to('Includes/Excludes')
+                Button:
+                    text: 'Android'
+                    on_press: root.switch_to('Android Settings')
+                Button:
+                    text: 'iOS'
+                    on_press: root.switch_to('iOS Settings')
+                Button:
+                    text: 'Other'
+                    on_press: root.switch_to('Others')
+                Button:
+                    text: 'Buildozer'
+                    on_press: root.switch_to('Buildozer')
+            ScreenManager:
+                id: screen_manager
+                Screen:
+                    id: screen_settings_basic
+                    name: 'Basic Settings'
+                    ScrollView:
+                        do_scroll_x: False
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            Label:
+                                text: 'Title'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: basic_title
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Package Name'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: basic_package
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Package Domain'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: basic_domain
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Orientation'
+                                size_hint_y: None
+                                height: '29sp'
+                            BoxLayout:
+                                size_hint_y: None
+                                height: '29sp'
+                                orientation: 'horizontal'
+                                ToggleButton:
+                                    text: 'all'
+                                    size_hint_y: None
+                                    height: '29sp'
+                                    group: 'orientation'
+                                    id: basic_all
+                                ToggleButton:
+                                    text: 'landscape'
+                                    size_hint_y: None
+                                    height: '29sp'
+                                    group: 'orientation'
+                                    id: basic_landscape
+                                ToggleButton:
+                                    text: 'portrait'
+                                    size_hint_y: None
+                                    height: '29sp'
+                                    group: 'orientation'
+                                    id: basic_portrait
+                            ToggleButton:
+                                text: 'Fullscreen'
+                                size_hint_y: None
+                                height: '29sp'
+                                id: basic_fullscreen
+
+                Screen:
+                    name: 'Directories'
+                    id: screen_settings_directories
+                Screen:
+                    name: 'Includes/Excludes'
+                    id: screen_settings_includes
+                Screen:
+                    name: 'Android Settings'
+                    id: screen_settings_android
+                Screen:
+                    name: 'iOS Settings'
+                    id: screen_settings_ios
+                Screen:
+                    name: 'Others'
+                    id: screen_settings_others
+                Screen:
+                    name: 'Buildozer'
+                    id: screen_settings_buildozer

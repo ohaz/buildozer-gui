@@ -34,8 +34,11 @@ class CreateProject(Screen):
         package_name = self.ids.create_project_package.text
         domain = self.ids.create_project_domain.text
         landscape = self.ids.create_project_landscape.state
+        all = self.ids.create_project_all.state
         orientation = 'portrait'
-        if landscape == 'down':
+        if all == 'down':
+            orientation = 'all'
+        elif landscape == 'down':
             orientation = 'landscape'
         specparser.init_default_spec(cur_dir, orientation, domain, package_name, title)
         specparser.save_spec(cur_dir)
@@ -130,3 +133,48 @@ class EditProject(Screen):
 
     def home(self):
         scrmgr.switch_to(scrmgr.get_screen('mainmenu'))
+
+    def switch_to(self, to):
+        self.ids.screen_manager.current = to
+        self.ids.current_sub_menu.text = to
+
+    def on_enter(self, *args):
+        self.load_basic_settings()
+
+    def load_basic_settings(self):
+        self.ids.basic_title.text = specparser.get_title()
+        self.ids.basic_package.text = specparser.get_package_name()
+        self.ids.basic_domain.text = specparser.get_package_domain()
+        if specparser.get_orientation() == 'all':
+            self.ids.basic_all.state = 'down'
+        elif specparser.get_orientation() == 'landscape':
+            self.ids.basic_landscape.state = 'down'
+        else:
+            self.ids.basic_portrait.state = 'down'
+        if specparser.get_fullscreen() == 1:
+            self.ids.basic_fullscreen.state = 'down'
+
+    def save(self):
+        specparser.set_title(self.ids.basic_title.text)
+        specparser.set_package_name(self.ids.basic_package.text)
+        specparser.set_package_domain(self.ids.basic_domain.text)
+        landscape = self.ids.basic_landscape.state
+        all = self.ids.basic_all.state
+        orientation = 'portrait'
+        if all == 'down':
+            orientation = 'all'
+        elif landscape == 'down':
+            orientation = 'landscape'
+        specparser.set_orientation(orientation)
+        if self.ids.basic_fullscreen.state == 'down':
+            specparser.set_fullscreen(1)
+        else:
+            specparser.set_fullscreen(0)
+        self.ids.save_button.text = '[color=00ff00]Saved[/color]'
+        Clock.schedule_interval(self.revert_save, 5)
+        specparser.save_spec()
+
+    def revert_save(self, dt):
+        self.ids.save_button.text = 'Save'
+
+
