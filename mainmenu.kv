@@ -1,3 +1,12 @@
+<FixedSizeLabel@Label>
+    size_hint_y: None
+    height: '29sp'
+
+<FixedSizeTextInput@TextInput>
+    size_hint_y: None
+    height: '29sp'
+    multiline: False
+
 <Mainmenu>:
     BoxLayout:
         orientation: 'vertical'
@@ -33,40 +42,23 @@
                 cols: 1
                 size_hint_y: None
                 height: self.minimum_height
-                Label:
+                FixedSizeLabel:
                     text: 'Title'
-                    size_hint_y: None
-                    height: '29sp'
-                TextInput:
-                    multiline: False
+                FixedSizeTextInput:
                     id: create_project_title
-                    size_hint_y: None
-                    height: '29sp'
                     text: 'Test App'
-                Label:
+                FixedSizeLabel:
                     text: 'Package Name'
-                    size_hint_y: None
-                    height: '29sp'
-                TextInput:
-                    multiline: False
+                FixedSizeTextInput:
                     id: create_project_package
-                    size_hint_y: None
-                    height: '29sp'
                     text: 'myapp'
-                Label:
+                FixedSizeLabel:
                     text: 'Package Domain'
-                    size_hint_y: None
-                    height: '29sp'
-                TextInput:
-                    multiline: False
-                    id: create_project_domain
-                    size_hint_y: None
-                    height: '29sp'
+                FixedSizeTextInput:
+                    id: create_project_domain=
                     text: 'org.test'
-                Label:
+                FixedSizeLabel:
                     text: 'Orientation'
-                    size_hint_y: None
-                    height: '29sp'
                 ToggleButton:
                     text: 'all'
                     size_hint_y: None
@@ -270,37 +262,20 @@
                             cols: 1
                             size_hint_y: None
                             height: self.minimum_height
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Title'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: basic_title
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Package Name'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: basic_package
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Package Domain'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: basic_domain
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Orientation'
-                                size_hint_y: None
-                                height: '29sp'
                             BoxLayout:
                                 size_hint_y: None
                                 height: '29sp'
@@ -337,87 +312,42 @@
                             cols: 1
                             size_hint_y: None
                             height: self.minimum_height
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Source Dir'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_sourcedir
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Include Extensions'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_inc_exts
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Exclude Extensions'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_exc_exts
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Exclude Patterns'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_exc_patterns
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Exclude Directories'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_exc_dirs
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Application Requirements'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_app_reqs
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Garden Requirements'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_garden_reqs
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Presplash'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_presplash
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Icon'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: inc_icon
-                                size_hint_y: None
-                                height: '29sp'
                 Screen:
                     name: 'Android Settings'
                     id: screen_settings_android
@@ -427,222 +357,102 @@
                             cols: 1
                             size_hint_y: None
                             height: self.minimum_height
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Permissions'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_permissions
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'API level'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_api
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Minimum API level'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_minapi
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'SDK version'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_sdk
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'NDK version'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_ndk
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Private Storage'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_private_storage
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'NDK Path'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_ndk_path
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'SDK Path'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_sdk_path
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'P4A Path'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_p4a_path
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'P4A Whitelist'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_p4a_whitelist
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'P4A Branch'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_p4a_branch
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Entrypoint'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_entrypoint
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional jars'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_jars
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional Java files'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_src
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Ouya Category'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_ouya_category
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Ouya Icon Filename'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_ouya_icon_filename
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'XML intent filters'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_manifest_intent_filters
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional Libraries (armeabi)'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_libraries_armeabi
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional Libraries (armeabi v7a)'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_libraries_armeabi_v7a
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional Libraries (x86)'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_libraries_x86
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Additional Libraries (mips)'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_add_libraries_mips
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Wakelock'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_wakelock
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Meta Data'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_meta_data
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Library project'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: android_library_references
-                                size_hint_y: None
-                                height: '29sp'
                 Screen:
                     name: 'iOS Settings'
                     id: screen_settings_ios
@@ -652,24 +462,14 @@
                             cols: 1
                             size_hint_y: None
                             height: self.minimum_height
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Codesign Debug'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: ios_codesign_debug
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Codesign Release'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: ios_codesign_release
-                                size_hint_y: None
-                                height: '29sp'
                 Screen:
                     name: 'Others'
                     id: screen_settings_others
@@ -682,21 +482,11 @@
                             cols: 1
                             size_hint_y: None
                             height: self.minimum_height
-                            Label:
+                            FixedSizeLabel:
                                 text: 'Log Level'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: buildozer_loglevel
-                                size_hint_y: None
-                                height: '29sp'
-                            Label:
+                            FixedSizeLabel:
                                 text: 'warn on root'
-                                size_hint_y: None
-                                height: '29sp'
-                            TextInput:
-                                multiline: False
+                            FixedSizeTextInput:
                                 id: buildozer_warn_on_root
-                                size_hint_y: None
-                                height: '29sp'
