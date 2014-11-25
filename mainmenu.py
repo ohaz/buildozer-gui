@@ -283,5 +283,3 @@ class EditProject(Screen):
 
     def revert_save(self, dt):
         self.ids.save_button.text = 'Save'
-
-

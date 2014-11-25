@@ -28,3 +28,4 @@ TODO
 * Add ways to set a specific option to the default value specified in https://github.com/kivy/buildozer/blob/master/buildozer/default.spec
 * Change current working directory
 * Add ways to set a specific option to a user-defined default value (e.g. android sdk/ndk path!)
+* Better error-handling
