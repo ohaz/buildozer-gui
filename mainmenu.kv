@@ -232,6 +232,9 @@
                 id: save_button
                 markup: True
                 on_press: root.save()
+        Label:
+            size_hint_y: None
+            height: root.height / 50
         BoxLayout:
             orientation: 'horizontal'
             BoxLayout:
@@ -418,12 +421,282 @@
                 Screen:
                     name: 'Android Settings'
                     id: screen_settings_android
+                    ScrollView:
+                        do_scroll_x: False
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            Label:
+                                text: 'Permissions'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_permissions
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'API level'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_api
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Minimum API level'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_minapi
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'SDK version'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_sdk
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'NDK version'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_ndk
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Private Storage'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_private_storage
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'NDK Path'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_ndk_path
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'SDK Path'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_sdk_path
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'P4A Path'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_p4a_path
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'P4A Whitelist'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_p4a_whitelist
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'P4A Branch'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_p4a_branch
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Entrypoint'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_entrypoint
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional jars'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_jars
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional Java files'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_src
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Ouya Category'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_ouya_category
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Ouya Icon Filename'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_ouya_icon_filename
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'XML intent filters'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_manifest_intent_filters
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional Libraries (armeabi)'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_libraries_armeabi
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional Libraries (armeabi v7a)'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_libraries_armeabi_v7a
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional Libraries (x86)'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_libraries_x86
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Additional Libraries (mips)'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_add_libraries_mips
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Wakelock'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_wakelock
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Meta Data'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_meta_data
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Library project'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: android_library_references
+                                size_hint_y: None
+                                height: '29sp'
                 Screen:
                     name: 'iOS Settings'
                     id: screen_settings_ios
+                    ScrollView:
+                        do_scroll_x: False
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            Label:
+                                text: 'Codesign Debug'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: ios_codesign_debug
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Codesign Release'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: ios_codesign_release
+                                size_hint_y: None
+                                height: '29sp'
                 Screen:
                     name: 'Others'
                     id: screen_settings_others
                 Screen:
                     name: 'Buildozer'
                     id: screen_settings_buildozer
+                    ScrollView:
+                        do_scroll_x: False
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            Label:
+                                text: 'Log Level'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: buildozer_loglevel
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'warn on root'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: buildozer_warn_on_root
+                                size_hint_y: None
+                                height: '29sp'

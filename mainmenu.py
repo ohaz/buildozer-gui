@@ -141,6 +141,10 @@ class EditProject(Screen):
     def on_pre_enter(self, *args):
         self.load_basic_settings()
         self.load_incexc_settings()
+        self.load_android_settings()
+        self.load_ios_settings()
+        self.load_other_settings()
+        self.load_buildozer_settings()
 
     def load_basic_settings(self):
         self.ids.basic_title.text = specparser.get_title()
@@ -166,7 +170,52 @@ class EditProject(Screen):
         self.ids.inc_presplash.text = specparser.get_presplash()
         self.ids.inc_icon.text = specparser.get_icon_filename()
 
+    def load_android_settings(self):
+        self.ids.android_permissions.text = specparser.get_android_permissions()
+        self.ids.android_api.text = specparser.get_android_api_level()
+        self.ids.android_minapi.text = specparser.get_android_min_api_level()
+        self.ids.android_sdk.text = specparser.get_android_sdk()
+        self.ids.android_ndk.text = specparser.get_android_ndk()
+        self.ids.android_private_storage.text = specparser.get_android_use_private_storage()
+        self.ids.android_ndk_path.text = specparser.get_android_ndk_path()
+        self.ids.android_sdk_path.text = specparser.get_android_sdk_path()
+        self.ids.android_p4a_path.text = specparser.get_android_p4a_path()
+        self.ids.android_p4a_whitelist.text = specparser.get_android_p4a_whitelist()
+        self.ids.android_p4a_branch.text = specparser.get_android_p4a_branch()
+        self.ids.android_entrypoint.text = specparser.get_android_entrypoint()
+        self.ids.android_add_jars.text = specparser.get_android_add_jars()
+        self.ids.android_add_src.text = specparser.get_android_add_src()
+        self.ids.android_ouya_category.text = specparser.get_android_ouya_category()
+        self.ids.android_ouya_icon_filename.text = specparser.get_icon_filename()
+        self.ids.android_manifest_intent_filters.text = specparser.get_android_manifest_intent_filters()
+        self.ids.android_add_libraries_armeabi.text = specparser.get_android_add_libs_armeabi()
+        self.ids.android_add_libraries_armeabi_v7a.text = specparser.get_android_add_libs_armeabi_v7a()
+        self.ids.android_add_libraries_x86.text = specparser.get_android_add_libs_x86()
+        self.ids.android_add_libraries_mips.text = specparser.get_android_add_libs_mips()
+        self.ids.android_wakelock.text = specparser.get_android_wakelock()
+        self.ids.android_meta_data.text = specparser.get_android_meta_data()
+        self.ids.android_library_references.text = specparser.get_android_library_references()
+
+    def load_ios_settings(self):
+        self.ids.ios_codesign_debug.text = specparser.get_ios_codesign_debug()
+        self.ids.ios_codesign_release.text = specparser.get_ios_codesign_release()
+
+    def load_other_settings(self):
+        #No other settings exist yet
+        pass
+
+    def load_buildozer_settings(self):
+        self.ids.buildozer_loglevel.text = specparser.get_buildozer_log_level()
+        self.ids.buildozer_warn_on_root.text = specparser.get_buildozer_warn_on_root()
+
     def save(self):
+        self.save_basic_settings()
+        self.save_incexc_settings()
+        specparser.save_spec()
+        self.ids.save_button.text = '[color=00ff00]Saved[/color]'
+        Clock.schedule_interval(self.revert_save, 5)
+
+    def save_basic_settings(self):
         specparser.set_title(self.ids.basic_title.text)
         specparser.set_package_name(self.ids.basic_package.text)
         specparser.set_package_domain(self.ids.basic_domain.text)
@@ -182,9 +231,55 @@ class EditProject(Screen):
             specparser.set_fullscreen(1)
         else:
             specparser.set_fullscreen(0)
-        self.ids.save_button.text = '[color=00ff00]Saved[/color]'
-        Clock.schedule_interval(self.revert_save, 5)
-        specparser.save_spec()
+
+    def save_incexc_settings(self):
+        specparser.set_source_dir(self.ids.inc_sourcedir.text)
+        specparser.set_source_include_exts(self.ids.inc_inc_exts.text)
+        specparser.set_source_exclude_dirs(self.ids.inc_exc_exts.text)
+        specparser.set_source_exclude_patterns(self.ids.inc_exc_patterns.text)
+        specparser.set_source_exclude_dirs(self.ids.inc_exc_dirs.text)
+        specparser.set_requirements(self.ids.inc_app_reqs.text)
+        specparser.set_garden_requirements(self.ids.inc_garden_reqs.text)
+        specparser.set_presplash(self.ids.inc_presplash.text)
+        specparser.set_icon_filename(self.ids.inc_icon.text)
+
+    def save_android_settings(self):
+        specparser.set_android_permissions(self.ids.android_permissions.text)
+        specparser.set_android_api_level(self.ids.android_api.text)
+        specparser.set_android_min_api_level(self.ids.android_minapi.text)
+        specparser.set_android_sdk(self.ids.android_sdk.text)
+        specparser.set_android_ndk(self.ids.android_ndk.text)
+        specparser.set_android_use_private_storage(self.ids.android_private_storage.text)
+        specparser.set_android_ndk_path(self.ids.android_ndk_path.text)
+        specparser.set_android_sdk_path(self.ids.android_sdk_path.text)
+        specparser.set_android_p4a_path(self.ids.android_p4a_path.text)
+        specparser.set_android_p4a_whitelist(self.ids.android_p4a_whitelist.text)
+        specparser.set_android_p4a_branch(self.ids.android_p4a_branch.text)
+        specparser.set_android_entrypoint(self.ids.android_entrypoint.text)
+        specparser.set_android_add_jars(self.ids.android_add_jars.text)
+        specparser.set_android_add_src(self.ids.android_add_src.text)
+        specparser.set_android_ouya_category(self.ids.android_ouya_category.text)
+        specparser.set_android_ouya_icon(self.ids.android_ouya_icon_filename.text)
+        specparser.set_android_manifest_intent_filters(self.ids.android_manifest_intent_filters.text)
+        specparser.set_android_add_libs_armeabi(self.ids.android_add_libraries_armeabi.text)
+        specparser.set_android_add_libs_armeabi_v7a(self.ids.android_add_libraries_armeabi_v7a.text)
+        specparser.set_android_add_libs_x86(self.ids.android_add_libraries_x86.text)
+        specparser.set_android_add_libs_mips(self.ids.android_add_libraries_mips.text)
+        specparser.set_android_wakelock(self.ids.android_wakelock.text)
+        specparser.set_android_meta_data(self.ids.android_meta_data.text)
+        specparser.set_android_library_references(self.ids.android_library_references.text)
+
+    def save_ios_settings(self):
+        #TODO fix when iOS thoughts are done
+        specparser.set_ios_codesign_debug(self.ids.ios_codesign_debug.text)
+        specparser.set_ios_codesign_release()
+
+    def save_other_settings(self):
+        pass
+
+    def save_buildozer_settings(self):
+        specparser.set_buildozer_log_level(self.ids.buildozer_loglevel.text)
+        specparser.set_buildozer_warn_on_root(self.ids.buildozer_warn_on_root.text)
 
     def revert_save(self, dt):
         self.ids.save_button.text = 'Save'

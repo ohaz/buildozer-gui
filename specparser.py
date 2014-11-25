@@ -73,7 +73,7 @@ def set_source_include_exts(exts=None):
     if exts is None:
         exts = 'py,png,jpg,kv,atlas'
     if exts == '':
-        config.remove(SECTION_APP, 'source.include_exts')
+        config.remove_option(SECTION_APP, 'source.include_exts')
     else:
         config.set(SECTION_APP, 'source.include_exts', exts)
 
@@ -88,7 +88,7 @@ def set_source_exclude_exts(exts=None):
     if exts is None:
         exts = 'spec'
     if exts == '':
-        config.remove(SECTION_APP, 'source.exclude_exts')
+        config.remove_option(SECTION_APP, 'source.exclude_exts')
     else:
         config.set(SECTION_APP, 'source.exclude_exts', exts)
 
@@ -103,7 +103,7 @@ def set_source_exclude_dirs(dirs=None):
     if dirs is None:
         dirs = 'tests,bin'
     if dirs == '':
-        config.remove(SECTION_APP, 'source.exclude_dirs')
+        config.remove_option(SECTION_APP, 'source.exclude_dirs')
     else:
         config.set(SECTION_APP, 'source.exclude_dirs', dirs)
 
@@ -118,7 +118,7 @@ def set_source_exclude_patterns(patterns=None):
     if patterns is None:
         patterns = 'license,images/*/*.jpg'
     if patterns == '':
-        config.remove(SECTION_APP, 'source.exclude_patterns')
+        config.remove_option(SECTION_APP, 'source.exclude_patterns')
     else:
         config.set(SECTION_APP, 'source.exclude_patterns', patterns)
 
@@ -131,8 +131,8 @@ def get_source_exclude_patterns():
 
 def set_version_method_regex(regex='__version__ = [\'"](.*)[\'"]', filename='%(source.dir)s/main.py'):
     if regex == '':
-        config.remove(SECTION_APP, 'version.regex')
-        config.remove(SECTION_APP, 'version.filename')
+        config.remove_option(SECTION_APP, 'version.regex')
+        config.remove_option(SECTION_APP, 'version.filename')
     else:
         config.set(SECTION_APP, 'version.regex', regex)
         config.set(SECTION_APP, 'version.filename', filename)
@@ -149,7 +149,7 @@ def get_version_method_regex():
 
 def set_version_method_static(version='1.2.0'):
     if version == '':
-        config.remove(SECTION_APP, 'version')
+        config.remove_option(SECTION_APP, 'version')
     else:
         config.set(SECTION_APP, 'version', version)
         config.remove_option(SECTION_APP, 'version.regex')
@@ -165,7 +165,7 @@ def set_requirements(requirements=None):
     if requirements is None:
         requirements = 'kivy'
     if requirements == '':
-        config.remove(SECTION_APP, 'requirements')
+        config.remove_option(SECTION_APP, 'requirements')
     else:
         config.set(SECTION_APP, 'requirements', requirements)
 
@@ -180,7 +180,7 @@ def set_garden_requirements(requirements=None):
     if requirements is None:
         requirements = ''
     if requirements == '':
-        config.remove(SECTION_APP, 'garden_requirements')
+        config.remove_option(SECTION_APP, 'garden_requirements')
     else:
         config.set(SECTION_APP, 'garden_requirements', requirements)
 
@@ -193,7 +193,7 @@ def get_garden_requirements():
 
 def set_presplash(filename='%(source.dir)s/data/presplash.png'):
     if filename == '':
-        config.remove(SECTION_APP, 'presplash.filename')
+        config.remove_option(SECTION_APP, 'presplash.filename')
     else:
         config.set(SECTION_APP, 'presplash.filename', filename)
 
@@ -205,7 +205,7 @@ def get_presplash():
 
 def set_icon_filename(filename='%(source.dir)s/data/icon.png'):
     if filename == '':
-        config.remove(SECTION_APP, 'icon.filename')
+        config.remove_option(SECTION_APP, 'icon.filename')
     else:
         config.set(SECTION_APP, 'icon.filename', filename)
 
@@ -217,7 +217,7 @@ def get_icon_filename():
 
 def set_orientation(orientation='all'):
     if orientation == '':
-        config.remove(SECTION_APP, 'orientation')
+        config.remove_option(SECTION_APP, 'orientation')
     else:
         config.set(SECTION_APP, 'orientation', orientation)
 
@@ -229,13 +229,13 @@ def get_orientation():
 
 def set_fullscreen(fullscreen=1):
     if fullscreen == '':
-        config.remove(SECTION_APP, 'fullscreen')
+        config.remove_option(SECTION_APP, 'fullscreen')
     else:
         config.set(SECTION_APP, 'fullscreen', str(fullscreen))
 
 def get_fullscreen():
     try:
-        return config.getint(SECTION_APP, 'fullscreen')
+        return config.get(SECTION_APP, 'fullscreen')
     except:
         return 0
 
@@ -243,7 +243,7 @@ def set_android_permissions(permissions=None):
     if permissions is None:
         permissions = ''
     if permissions == '':
-        config.remove(SECTION_APP, 'android.permissions')
+        config.remove_option(SECTION_APP, 'android.permissions')
     else:
         config.set(SECTION_APP, 'android.permissions', permissions)
 
@@ -256,43 +256,43 @@ def get_android_permissions():
 
 def set_android_api_level(level=14):
     if level == '':
-        config.remove(SECTION_APP, 'android.api')
+        config.remove_option(SECTION_APP, 'android.api')
     else:
         config.set(SECTION_APP, 'android.api', str(level))
 
 def get_android_api_level():
     try:
-        return config.getint(SECTION_APP, 'android.api')
+        return config.get(SECTION_APP, 'android.api')
     except:
         return ''
 
 def set_android_min_api_level(level=8):
     if level == '':
-        config.remove(SECTION_APP, 'android.minapi')
+        config.remove_option(SECTION_APP, 'android.minapi')
     else:
         config.set(SECTION_APP, 'android.minapi', str(level))
 
 def get_android_min_api_level():
     try:
-        return config.getint(SECTION_APP, 'android.minapi')
+        return config.get(SECTION_APP, 'android.minapi')
     except:
         return ''
 
 def set_android_sdk(version=21):
     if version == '':
-        config.remove(SECTION_APP, 'android.sdk')
+        config.remove_option(SECTION_APP, 'android.sdk')
     else:
         config.set(SECTION_APP, 'android.sdk', str(version))
 
 def get_android_sdk():
     try:
-        return config.getint(SECTION_APP, 'android.sdk')
+        return config.get(SECTION_APP, 'android.sdk')
     except:
         return ''
 
 def set_android_ndk(version='9c'):
     if version == '':
-        config.remove(SECTION_APP, 'android.ndk')
+        config.remove_option(SECTION_APP, 'android.ndk')
     else:
         config.set(SECTION_APP, 'android.ndk', version)
 
@@ -304,7 +304,7 @@ def get_android_ndk():
 
 def set_android_use_private_storage(value=True):
     if value == '':
-        config.remove(SECTION_APP, 'android.private_storage')
+        config.remove_option(SECTION_APP, 'android.private_storage')
     else:
         config.set(SECTION_APP, 'android.private_storage', str(value))
 
@@ -316,7 +316,7 @@ def get_android_use_private_storage():
 
 def set_android_ndk_path(path):
     if path == '':
-        config.remove(SECTION_APP, 'android.ndk_path')
+        config.remove_option(SECTION_APP, 'android.ndk_path')
     else:
         config.set(SECTION_APP, 'android.ndk_path', path)
 
@@ -328,7 +328,7 @@ def get_android_ndk_path():
 
 def set_android_sdk_path(path):
     if path == '':
-        config.remove(SECTION_APP, 'android.sdk_path')
+        config.remove_option(SECTION_APP, 'android.sdk_path')
     else:
         config.set(SECTION_APP, 'android.sdk_path', path)
 
@@ -340,7 +340,7 @@ def get_android_sdk_path():
 
 def set_android_p4a_path(path):
     if path == '':
-        config.remove(SECTION_APP, 'android.p4a_dir')
+        config.remove_option(SECTION_APP, 'android.p4a_dir')
     else:
         config.set(SECTION_APP, 'android.p4a_dir', path)
 
@@ -354,7 +354,7 @@ def set_android_p4a_whitelist(whitelist=None):
     if whitelist is None:
         whitelist = ''
     if whitelist == '':
-        config.remove(SECTION_APP, 'android.p4a_whitelist')
+        config.remove_option(SECTION_APP, 'android.p4a_whitelist')
     else:
         config.set(SECTION_APP, 'android.p4a_whitelist', whitelist)
 
@@ -367,7 +367,7 @@ def get_android_p4a_whitelist():
 
 def set_android_entrypoint(name='org.renpy.android.PythonActivity'):
     if name == '':
-        config.remove(SECTION_APP, 'android.entrypoint')
+        config.remove_option(SECTION_APP, 'android.entrypoint')
     else:
         config.set(SECTION_APP, 'android.entrypoint', name)
 
@@ -381,7 +381,7 @@ def set_android_add_jars(names=None):
     if names is None:
         names = ''
     if names == '':
-        config.remove(SECTION_APP, 'android.add_jars')
+        config.remove_option(SECTION_APP, 'android.add_jars')
     else:
         config.set(SECTION_APP, 'android.add_jars', names)
 
@@ -396,7 +396,7 @@ def set_android_add_src(names=None):
     if names is None:
         names = ''
     if names == '':
-        config.remove(SECTION_APP, 'android.add_src')
+        config.remove_option(SECTION_APP, 'android.add_src')
     else:
         config.set(SECTION_APP, 'android.add_src', names)
 
@@ -409,7 +409,7 @@ def get_android_add_src():
 
 def set_android_p4a_branch(branch='master'):
     if branch == '':
-        config.remove(SECTION_APP, 'android.branch')
+        config.remove_option(SECTION_APP, 'android.branch')
     else:
         config.set(SECTION_APP, 'android.branch', branch)
 
@@ -421,7 +421,7 @@ def get_android_p4a_branch():
 
 def set_android_ouya_category(category='GAME'):
     if category == '':
-        config.remove(SECTION_APP, 'android.ouya.category')
+        config.remove_option(SECTION_APP, 'android.ouya.category')
     else:
         config.set(SECTION_APP, 'android.ouya.category', category)
 
@@ -433,7 +433,7 @@ def get_android_ouya_category():
 
 def set_android_ouya_icon(path='%(source.dir)s/data/ouya_icon.png'):
     if path == '':
-        config.remove(SECTION_APP, 'android.ouya.icon.filename')
+        config.remove_option(SECTION_APP, 'android.ouya.icon.filename')
     else:
         config.set(SECTION_APP, 'android.ouya.icon.filename', path)
 
@@ -445,7 +445,7 @@ def get_android_ouya_icon():
 
 def set_android_manifest_intent_filters(path):
     if path == '':
-        config.remove(SECTION_APP, 'android.manifest.intent_filters')
+        config.remove_option(SECTION_APP, 'android.manifest.intent_filters')
     else:
         config.set(SECTION_APP, 'android.manifest.intent_filters', path)
 
@@ -459,7 +459,7 @@ def set_android_add_libs_armeabi(libs=None):
     if libs is None:
         libs = 'libs/android/*.so'
     if libs == '':
-        config.remove(SECTION_APP, 'android.add_libs_armeabi')
+        config.remove_option(SECTION_APP, 'android.add_libs_armeabi')
     else:
         config.set(SECTION_APP, 'android.add_libs_armeabi', libs)
 
@@ -474,7 +474,7 @@ def set_android_add_libs_armeabi_v7a(libs=None):
     if libs is None:
         libs = 'libs/android-v7/*.so'
     if libs == '':
-        config.remove(SECTION_APP, 'android.add_libs_armeabi_v7a')
+        config.remove_option(SECTION_APP, 'android.add_libs_armeabi_v7a')
     else:
         config.set(SECTION_APP, 'android.add_libs_armeabi_v7a', libs)
 
@@ -489,7 +489,7 @@ def set_android_add_libs_x86(libs=None):
     if libs is None:
         libs = 'libs/android-x86/*.so'
     if libs == '':
-        config.remove(SECTION_APP, 'android.add_libs_x86')
+        config.remove_option(SECTION_APP, 'android.add_libs_x86')
     else:
         config.set(SECTION_APP, 'android.add_libs_x86', libs)
 
@@ -504,7 +504,7 @@ def set_android_add_libs_mips(libs=None):
     if libs is None:
         libs = 'libs/android-mips/*.so'
     if libs == '':
-        config.remove(SECTION_APP, 'android.add_libs_mips')
+        config.remove_option(SECTION_APP, 'android.add_libs_mips')
     else:
         config.set(SECTION_APP, 'android.add_libs_mips', libs)
 
@@ -517,7 +517,7 @@ def get_android_add_libs_mips():
 
 def set_android_wakelock(value):
     if value == '':
-        config.remove(SECTION_APP, 'android.wakelock')
+        config.remove_option(SECTION_APP, 'android.wakelock')
     else:
         config.set(SECTION_APP, 'android.wakelock', str(value))
 
@@ -531,7 +531,7 @@ def set_android_meta_data(data=None):
     if data is None:
         data = ''
     if data == '':
-        config.remove(SECTION_APP, 'android.meta_data')
+        config.remove_option(SECTION_APP, 'android.meta_data')
     else:
         config.set(SECTION_APP, 'android.meta_data', data)
 
@@ -546,7 +546,7 @@ def set_android_library_references(references=None):
     if references is None:
         references = ''
     if references == '':
-        config.remove(SECTION_APP, 'android.library_references')
+        config.remove_option(SECTION_APP, 'android.library_references')
     else:
         config.set(SECTION_APP, 'android.library_references', references)
 
@@ -559,13 +559,16 @@ def get_android_library_references():
 
 def set_ios_codesign_debug(lastname, firstname, hexstring):
     if lastname == '' and firstname == '':
-        config.remove(SECTION_APP, 'ios.codesign.debug')
+        config.remove_option(SECTION_APP, 'ios.codesign.debug')
     else:
         config.set(SECTION_APP, 'ios.codesign.debug', '"iPhone Developer: '+lastname+' '+firstname+' ('+hexstring+')"')
 
 def get_ios_codesign_debug():
-    codesign = config.get(SECTION_APP, 'ios.codesign.debug')
-    #TODO think about a way to solve this. perhaps regex?
+    try:
+        codesign = config.get(SECTION_APP, 'ios.codesign.debug')
+        #TODO think about a way to solve this. perhaps regex?
+    except:
+        return ''
 
 def set_ios_codesign_release():
     config.set(SECTION_APP, 'ios.codesign.release', config.get(SECTION_APP, 'ios.codesign.debug'))
@@ -578,24 +581,24 @@ def get_ios_codesign_release():
 
 def set_buildozer_log_level(value):
     if value == '':
-        config.remove(SECTION_APP, 'log_level')
+        config.remove_option(SECTION_APP, 'log_level')
     else:
         config.set(SECTION_BUILDOZER, 'log_level', value)
 
 def get_buildozer_log_level():
     try:
-        return config.getint(SECTION_BUILDOZER, 'log_level')
+        return config.get(SECTION_BUILDOZER, 'log_level')
     except:
         return ''
 
 def set_buildozer_warn_on_root(value):
     if value == '':
-        config.remove(SECTION_APP, 'warn_on_root')
+        config.remove_option(SECTION_APP, 'warn_on_root')
     else:
         config.set(SECTION_BUILDOZER, 'warn_on_root', value)
 
 def get_buildozer_warn_on_root():
     try:
-        return config.getint(SECTION_BUILDOZER, 'warn_on_root')
+        return config.get(SECTION_BUILDOZER, 'warn_on_root')
     except:
         return ''
