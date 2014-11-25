@@ -242,9 +242,6 @@
                     text: 'Basic'
                     on_press: root.switch_to('Basic Settings')
                 Button:
-                    text: 'Dirs'
-                    on_press: root.switch_to('Directories')
-                Button:
                     text: 'Inc/Exc'
                     on_press: root.switch_to('Includes/Excludes')
                 Button:
@@ -328,13 +325,96 @@
                                 size_hint_y: None
                                 height: '29sp'
                                 id: basic_fullscreen
-
-                Screen:
-                    name: 'Directories'
-                    id: screen_settings_directories
                 Screen:
                     name: 'Includes/Excludes'
                     id: screen_settings_includes
+                    ScrollView:
+                        do_scroll_x: False
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: self.minimum_height
+                            Label:
+                                text: 'Source Dir'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_sourcedir
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Include Extensions'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_inc_exts
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Exclude Extensions'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_exc_exts
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Exclude Patterns'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_exc_patterns
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Exclude Directories'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_exc_dirs
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Application Requirements'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_app_reqs
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Garden Requirements'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_garden_reqs
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Presplash'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_presplash
+                                size_hint_y: None
+                                height: '29sp'
+                            Label:
+                                text: 'Icon'
+                                size_hint_y: None
+                                height: '29sp'
+                            TextInput:
+                                multiline: False
+                                id: inc_icon
+                                size_hint_y: None
+                                height: '29sp'
                 Screen:
                     name: 'Android Settings'
                     id: screen_settings_android

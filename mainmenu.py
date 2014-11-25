@@ -138,8 +138,9 @@ class EditProject(Screen):
         self.ids.screen_manager.current = to
         self.ids.current_sub_menu.text = to
 
-    def on_enter(self, *args):
+    def on_pre_enter(self, *args):
         self.load_basic_settings()
+        self.load_incexc_settings()
 
     def load_basic_settings(self):
         self.ids.basic_title.text = specparser.get_title()
@@ -153,6 +154,17 @@ class EditProject(Screen):
             self.ids.basic_portrait.state = 'down'
         if specparser.get_fullscreen() == 1:
             self.ids.basic_fullscreen.state = 'down'
+
+    def load_incexc_settings(self):
+        self.ids.inc_sourcedir.text = specparser.get_source_dir()
+        self.ids.inc_inc_exts.text = specparser.get_source_include_exts()
+        self.ids.inc_exc_exts.text = specparser.get_source_exclude_exts()
+        self.ids.inc_exc_patterns.text = specparser.get_source_exclude_patterns()
+        self.ids.inc_exc_dirs.text = specparser.get_source_exclude_dirs()
+        self.ids.inc_app_reqs.text = specparser.get_requirements()
+        self.ids.inc_garden_reqs.text = specparser.get_garden_requirements()
+        self.ids.inc_presplash.text = specparser.get_presplash()
+        self.ids.inc_icon.text = specparser.get_icon_filename()
 
     def save(self):
         specparser.set_title(self.ids.basic_title.text)
