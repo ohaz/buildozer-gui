@@ -20,6 +20,10 @@ Instructions
 * run buildozer-gui (currently done with python PATH/TO/BUILDOZER-GUI/main.py)
 * create a new project / edit an existing project and follow the UI instructions
 
+Example Screenshot
+------------
+![Screenshot 1](http://i.imgur.com/coatl6m.png)
+
 TODO
 ------------
 
