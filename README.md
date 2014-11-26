@@ -18,7 +18,8 @@ Instructions
 
 * cd to the directory of your application
 * run buildozer-gui (currently done with python PATH/TO/BUILDOZER-GUI/main.py)
-* create a new project / edit an existing project and follow the UI instructions
+* If you've already used buildozer init or buildozer-gui, click LOAD, if not, click NEW
+* follow the UI instructions
 
 Example Screenshot
 ------------
