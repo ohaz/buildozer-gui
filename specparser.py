@@ -1,4 +1,7 @@
-import ConfigParser
+try:
+    import ConfigParser
+except:
+    import configparser as ConfigParser
 import os
 
 config = ConfigParser.RawConfigParser()
